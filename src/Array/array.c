@@ -18,7 +18,7 @@ Array *Array_create(size_t element_size, size_t initial_size)
   return array;
 
 error:
-  if(array) free (array);
+  free(array);
   return NULL;
 }
 
@@ -75,10 +75,8 @@ int Array_contract(Array *array)
 void Array_destroy(Array *array)
 {
   //free mem allocs
-  if(array) {
-    if(array->contents){
-      free(array->contents);
-    }
+  if(array){
+    free(array->contents);
     free(array);
   }
 }
