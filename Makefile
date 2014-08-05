@@ -8,7 +8,7 @@ OBJECTS=$(patsubst %.c, %.o, $(SOURCES))
 TEST_SRC=$(wildcard tests/*_tests.c)
 TESTS=$(patsubst %.c,%,$(TEST_SRC))
 
-TARGET=build/lib-data-structs.a
+TARGET=build/libdatastructs.a
 SO_TARGET=$(patsubst %.a, %.so, $(TARGET))
 
 # The Target Build
@@ -31,7 +31,7 @@ build:
 
 # The Unit Tests
 .PHONY: tests
-tests: CFLAGS += $(TARGET)
+tests: LIBFLAGS += -ldatastructs
 tests: $(TESTS)
 	sh ./tests/runtests.sh
 
