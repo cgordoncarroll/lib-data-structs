@@ -15,12 +15,6 @@ char *test_create()
     return NULL;
 }
 
-char *test_clear()
-{
-    List_clear(list);
-    return NULL;
-}
-
 char *test_destroy()
 {
     List_destroy(list);
@@ -77,6 +71,18 @@ char *test_unshift_shift()
     return NULL;
 }
 
+char *test_read()
+{
+    List_push(list, tv1);
+    List_push(list, tv2);
+    List_push(list, tv3);
+    LIST_ITERATOR(list){
+        printf("%s\n", current->value);
+    }
+
+    return NULL;
+}
+
 char *test_remove()
 {
     List_push(list, tv1);
@@ -97,7 +103,7 @@ char *all_tests() {
     mu_run_test(test_push_pop);
     mu_run_test(test_unshift_shift);
     mu_run_test(test_remove);
-    mu_run_test(test_clear);
+    mu_run_test(test_read);
     mu_run_test(test_destroy);
 
     return NULL;

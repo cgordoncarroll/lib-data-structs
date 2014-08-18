@@ -1,5 +1,5 @@
-#ifndef _List_h
-#define _List_h
+#ifndef _LIST_h
+#define _LIST_h
 
 #include <stdlib.h>
 
@@ -17,8 +17,6 @@ typedef struct List {
 
 List *List_create();
 void List_destroy(List *list);
-void List_clear(List *list);
-void List_clear_destroy(List *list);
 
 #define List_size(A) ((A)->size)
 #define List_first(A) ((A)->first != NULL ? (A)->first->value : NULL)
@@ -30,8 +28,8 @@ void List_unshift(List *list, void *value);
 void *List_shift(List *list);
 void *List_remove(List *list, ListNode *node);
 
-#define LIST_ITERATOR(L) ListNode *_node = NULL;\
-    ListNode *cur = NULL;\
-    for(cur = _node = L->first; _node != NULL; cur = _node = _node->next)
+#define LIST_ITERATOR(A) ListNode *_node = NULL;\
+    ListNode *current = NULL;\
+    for(current = _node = A->first; _node != NULL; current = _node = _node->next)
 
 #endif

@@ -1,5 +1,5 @@
-#include <List/list.h>
-#include <shared/dbg.h>
+#include "List/list.h"
+#include "shared/dbg.h"
 
 List *List_create()
 {
@@ -8,28 +8,10 @@ List *List_create()
 
 void List_destroy(List *list)
 {
-    LIST_ITERATOR(list){
-        if(cur->prev){
-            free(cur->prev);
-        }
+    LIST_ITERATOR(list) {
+        free(current);
     }
-    free(list->first);
     free(list);
-}
-
-void List_clear(List *list)
-{
-    LIST_ITERATOR(list){
-        if(cur->value){
-            free(cur->value);
-        }
-    }
-}
-
-void List_clear_destroy(List *list)
-{
-    List_clear(list);
-    List_destroy(list);
 }
 
 void List_push(List *list, void *value)
